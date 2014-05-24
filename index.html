@@ -1,0 +1,76 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Rushikesh: Tip Calculator</title>
+	<link rel="stylesheet" href="themes/rushi-tipc.min.css" />
+	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="themes/jquery.mobile.structure-1.4.2.min.css" />
+	<script src="themes/jquery-1.10.2.min.js"></script>
+	<script src="themes/jquery.mobile-1.4.2.min.js"></script>
+	<style>
+		.result{
+			text-align: center;
+			font-size: 18px;
+			font-weight: bold;
+		}
+		#quote{
+			position: relative;
+			top: 25px;
+			text-align: center;
+			font-size: 18px;
+			font-weight: bold;
+			text-decoration: italic;
+		}
+	</style>
+	<script>
+		$(document).ready(function(){
+			$('#slider1,#slider2,#slider3').on('slidestop',function(event, ui) {
+			      var amt,tip,ppl,individualTotal,total;
+			      amt = parseFloat($('#slider1').val());
+			      
+			      tip = parseFloat($('#slider2').val());
+			      
+			      total = parseFloat(amt + (amt*tip/100));
+			      
+			      ppl = parseInt($('#slider3').val());
+			      
+			      individualTotal = parseFloat(total/ppl);
+			      
+			      $('#totalAmt').html(total);
+			      $('#indAmt').html(individualTotal);
+
+			      /*alert($(this).val());
+			        if (event.originalEvent) {
+			            //manual change
+			            play(ui.value);
+			        }
+			        else {
+			            //programmatic change
+			        }
+			        */
+			    });
+		});
+	</script>
+</head>
+<body>
+	<div data-role="page" data-theme="a">
+		<div data-role="header" data-position="inline">
+			<h1>TipC</h1>
+		</div>
+		<div data-role="content" data-theme="a">
+			<div class="result">Total Amount:<span id="totalAmt">0</span></div>
+			<div class="result">Each One Pays:<span id="indAmt">0</span></div>
+			<label for="slider1">Bill Amount:</label>
+			<input type="range" name="amt" id="slider1" value="0" min="0" max="9999.99" data-theme="a" data-highlight="true" />
+
+			<label for="slider2">Tip %:</label>
+			<input type="range" name="perc" id="slider2" value="10" min="0" max="99" data-theme="a" data-highlight="true" />
+
+			<label for="slider3">Split Into:</label>
+			<input type="range" name="split" id="slider3" value="2" min="1" max="100" data-theme="a" data-highlight="true" />			
+			<div id="quote">A bad tip is better than no tip at all</div>
+		</div>
+	</div>
+</body>
+</html>
