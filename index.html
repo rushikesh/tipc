@@ -56,6 +56,7 @@
 	<div data-role="page" data-theme="a">
 		<div data-role="header" data-position="inline">
 			<h1>TipC</h1>
+			<a href="#popupBasic" data-position-to="window" data-transition="fade" data-rel="popup" id="infoicon" data-icon="info" class="ui-btn-right" data-iconpos="notext">Info</a>
 		</div>
 		<div data-role="content" data-theme="a">
 			<div class="result">Total Amount:<span id="totalAmt">0</span></div>
@@ -69,6 +70,12 @@
 			<label for="slider3">Split Into:</label>
 			<input type="range" name="split" id="slider3" value="2" min="1" max="100" data-theme="a" data-highlight="true" />			
 			<div id="quote">A bad tip is better than no tip at all</div>
+		</div>
+		<div data-role="popup" id="popupBasic" data-overlay-theme="a" class="ui-content" >
+	    	<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+				<p>This is a Very basic Tip Calculator App.<p>
+				<p>Use slider or tap in the input box to enter values<p>
+				<p>Created By: <a href="http://www.rushis.com">Rushi</a><p>
 		</div>
 	</div>
 </body>
