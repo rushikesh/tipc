@@ -15,7 +15,7 @@
 			font-weight: bold;
 		}
 		#quote{
-			top: 25px;
+			top: 23px;
 			text-align: center;
 			font-size: 18px;
 			font-weight: bold;
@@ -25,20 +25,7 @@
 	<script>
 		$(document).ready(function(){
 			$('#slider1,#slider2,#slider3').on('slidestop',function(event, ui) {
-			      var amt,tip,ppl,individualTotal,total;
-			      amt = parseFloat($('#slider1').val());
-			      
-			      tip = parseFloat($('#slider2').val());
-			      
-			      total = parseFloat(amt + (amt*tip/100));
-			      
-			      ppl = parseInt($('#slider3').val());
-			      
-			      individualTotal = parseFloat(total/ppl);
-			      
-			      $('#totalAmt').html(total);
-			      $('#indAmt').html(individualTotal);
-
+				cal();
 			      /*alert($(this).val());
 			        if (event.originalEvent) {
 			            //manual change
@@ -49,7 +36,27 @@
 			        }
 			        */
 			    });
+			$('#slider1,#slider2,#slider3').on('change',function(event, ui) {
+				cal();
+		    });			
 		});
+
+		function cal(){
+			var amt,tip,ppl,individualTotal,total;
+
+			amt = parseFloat($('#slider1').val());
+
+			tip = parseFloat($('#slider2').val());
+
+			total = parseFloat(amt + (amt*tip/100)).toFixed(2);
+
+			ppl = parseInt($('#slider3').val());
+
+			individualTotal = parseFloat(total/ppl).toFixed(2);
+
+			$('#totalAmt').html(total);
+			$('#indAmt').html(individualTotal);
+		}
 	</script>
 </head>
 <body>
@@ -62,10 +69,10 @@
 			<div class="result">Total Amount:<span id="totalAmt">0</span></div>
 			<div class="result">Each One Pays:<span id="indAmt">0</span></div>
 			<label for="slider1">Bill Amount:</label>
-			<input type="range" name="amt" id="slider1" value="0" min="0" max="9999.99" data-theme="a" data-highlight="true" />
+			<input type="range" name="amt" id="slider1" step="0.1" value="0" min="0" max="9999.99" data-theme="a" data-highlight="true" />
 
 			<label for="slider2">Tip %:</label>
-			<input type="range" name="perc" id="slider2" value="10" min="0" max="99" data-theme="a" data-highlight="true" />
+			<input type="range" name="perc" step="0.1" id="slider2" value="10" min="0" max="99" data-theme="a" data-highlight="true" />
 
 			<label for="slider3">Split Into:</label>
 			<input type="range" name="split" id="slider3" value="2" min="1" max="100" data-theme="a" data-highlight="true" />			
